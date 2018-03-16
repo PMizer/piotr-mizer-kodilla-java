@@ -23,7 +23,7 @@ public class CollectionTestSuite {
         //When
 
         OddNumbersExterminator exterminate = new OddNumbersExterminator();
-        ArrayList<Integer> result =  new ArrayList<Integer>(exterminate.exterminate(testOdd));
+        ArrayList<Integer> result =  exterminate.exterminate(testOdd);
 
         System.out.println("Testing Normal List " + result);
 
@@ -41,7 +41,7 @@ public class CollectionTestSuite {
         //When
 
         OddNumbersExterminator exterminate = new OddNumbersExterminator();
-        ArrayList<Integer> result =  new ArrayList<Integer>(exterminate.exterminate(testOdd));
+        ArrayList<Integer> result = exterminate.exterminate(testOdd);
 
         System.out.println("Testing Empty List " + result);
 
