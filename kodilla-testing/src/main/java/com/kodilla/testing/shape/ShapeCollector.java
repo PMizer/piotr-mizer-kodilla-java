@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class ShapeCollector {
 
-    public ArrayList<Shape> shapeList = new ArrayList<Shape>();
-    Shape shape;
+    private ArrayList<Shape> shapeList = new ArrayList<Shape>();
+
 
     public void addFigure(Shape shape){
         shapeList.add(shape);
@@ -13,13 +13,7 @@ public class ShapeCollector {
     }
 
     public boolean removeFigure(Shape shape){
-        boolean result = false;
-
-        if (shapeList.contains(shape)){
-            shapeList.remove(shape);
-            result = true;
-        }
-        return result;
+        return shapeList.remove(shape);
     }
 
     public Shape getFigure(int n){
@@ -27,14 +21,8 @@ public class ShapeCollector {
         return get;
     }
 
-    public void showFigures(){
-
-        for(Shape temp : shapeList){
-            System.out.println("Figura to " +temp.getShapeName()+" o polu "+temp.getField());
-        }
-
+    public ArrayList<Shape> getShapeList() {
+        return shapeList;
     }
-
-
 
 }

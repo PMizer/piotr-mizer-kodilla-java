@@ -55,7 +55,7 @@ public class ShapeCollectorTestSuite {
 
         //Then
         Assert.assertTrue(result);
-
+        Assert.assertEquals(0, shapeCollector.getShapeList());
     }
 
 
