@@ -25,15 +25,15 @@ public class ForumStat  {
         return commentsCount;
     }
 
-    public double getAverageUserPost(){
+    public Double getAverageUserPost(){
         return averageUserPost;
     }
 
-    public double getAverageCommentsPerUser() {
+    public Double getAverageCommentsPerUser() {
         return averageCommentsPerUser;
     }
 
-    public double getAverageCommentsPerPost() {
+    public Double getAverageCommentsPerPost() {
         return averageCommentsPerPost;
     }
 
@@ -41,21 +41,10 @@ public class ForumStat  {
         userNamesQuantity = statistics.usersNames().size();
         postsCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
-        if(userNamesQuantity == 0){
-            averageUserPost = 0;
-        }else{
-            averageUserPost = postsCount / userNamesQuantity;
-        }
-        if(userNamesQuantity == 0){
-            averageCommentsPerUser = 0;
-        }else {
-            averageCommentsPerUser = commentsCount / userNamesQuantity;
-        }
-        if(postsCount == 0){
-            averageCommentsPerPost = 0;
-        }else {
-            averageCommentsPerPost = commentsCount / postsCount;
-        }
+        averageUserPost = (double)postsCount / userNamesQuantity;
+        averageCommentsPerUser = (double)commentsCount / userNamesQuantity;
+        averageCommentsPerPost = (double)commentsCount / postsCount;
+
     }
     void showStatistics(){
         System.out.println(userNamesQuantity);

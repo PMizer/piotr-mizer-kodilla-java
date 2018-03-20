@@ -3,7 +3,8 @@ package com.kodilla.testing.forum.statistics;
 
 import org.junit.*;
 
-import java.util.ArrayList;
+import java.nio.DoubleBuffer;
+import java.util.*;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -38,7 +39,7 @@ public class ForumStatisticsTestSuite {
         int commentCount = 10;
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
 
-        ArrayList<String> forumUsers = new ArrayList<String>();
+        List<String> forumUsers = new ArrayList<String>();
         forumUsers.add("Piotrek");
         forumUsers.add("Janek");
 
@@ -49,11 +50,11 @@ public class ForumStatisticsTestSuite {
         ForumStat forumStat = new ForumStat();
         forumStat.calculateAdvStatistics(statisticsMock);
 
-        int result = forumStat.getPostsCount();
+        Double result = forumStat.getAverageCommentsPerPost();
 
         //Then
 
-        Assert.assertEquals(0,result);
+        Assert.assertTrue(Double.isInfinite(result));
     }
 
     @Test
@@ -66,7 +67,7 @@ public class ForumStatisticsTestSuite {
         int commentCount = 10;
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
 
-        ArrayList<String> forumUsers = new ArrayList<String>();
+        List<String> forumUsers = new ArrayList<String>();
         forumUsers.add("Piotrek");
         forumUsers.add("Janek");
 
@@ -77,11 +78,11 @@ public class ForumStatisticsTestSuite {
         ForumStat forumStat = new ForumStat();
         forumStat.calculateAdvStatistics(statisticsMock);
 
-        int result = forumStat.getPostsCount();
+        Double result = forumStat.getAverageCommentsPerPost();
 
         //Then
 
-        Assert.assertEquals(1000,result);
+        Assert.assertEquals(0.01,result, 0);
     }
 
     @Test
@@ -94,7 +95,7 @@ public class ForumStatisticsTestSuite {
         int commentCount = 0;
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
 
-        ArrayList<String> forumUsers = new ArrayList<String>();
+        List<String> forumUsers = new ArrayList<String>();
         forumUsers.add("Piotrek");
         forumUsers.add("Janek");
 
@@ -122,7 +123,7 @@ public class ForumStatisticsTestSuite {
         int commentCount = 10;
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
 
-        ArrayList<String> forumUsers = new ArrayList<String>();
+        List<String> forumUsers = new ArrayList<String>();
         forumUsers.add("Piotrek");
         forumUsers.add("Janek");
 
@@ -150,7 +151,7 @@ public class ForumStatisticsTestSuite {
         int commentCount = 10;
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
 
-        ArrayList<String> forumUsers = new ArrayList<String>();
+        List<String> forumUsers = new ArrayList<String>();
         forumUsers.add("Piotrek");
         forumUsers.add("Janek");
 
@@ -178,7 +179,7 @@ public class ForumStatisticsTestSuite {
         int commentCount = 10;
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
 
-        ArrayList<String> forumUsers = new ArrayList<String>();
+        List<String> forumUsers = new ArrayList<String>();
 
 
         when(statisticsMock.usersNames()).thenReturn(forumUsers);
@@ -202,10 +203,10 @@ public class ForumStatisticsTestSuite {
         int postCount = 300;
         when(statisticsMock.postsCount()).thenReturn(postCount);
 
-        int commentCount = 10;
+        int commentCount = 100;
         when(statisticsMock.commentsCount()).thenReturn(commentCount);
 
-        ArrayList<String> forumUsers = new ArrayList<String>();
+        List<String> forumUsers = new ArrayList<String>();
         for(int i = 0 ; i < 100 ; i++){
             forumUsers.add("Wojtek "+i);
         }
@@ -217,10 +218,10 @@ public class ForumStatisticsTestSuite {
         ForumStat forumStat = new ForumStat();
         forumStat.calculateAdvStatistics(statisticsMock);
 
-        int result = forumStat.getUsersNamesQuantity();
+        Double result = forumStat.getAverageCommentsPerUser();
 
         //Then
 
-        Assert.assertEquals(100,result);
+        Assert.assertEquals(1,result,0);
     }
 }
