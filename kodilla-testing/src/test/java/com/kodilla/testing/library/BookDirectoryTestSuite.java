@@ -107,4 +107,62 @@ public class BookDirectoryTestSuite {
         assertEquals(0, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
+
+    @Test
+    public void testListBooksInHandsOf_ZeroBook() {
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> resultListOf0Books = new ArrayList<>();
+        LibraryUser randomUser = new LibraryUser("Janek", "Kowalski", "123456789");
+
+        when(libraryDatabaseMock.listBooksInHandsOf(randomUser))
+                .thenReturn(resultListOf0Books);
+
+        // When
+        List<Book> theZeroBookUser = bookLibrary.listBooksInHandsOf(randomUser);
+
+
+        // Then
+        assertEquals(0, theZeroBookUser.size());
+    }
+
+    @Test
+    public void testListBooksInHandsOf_OneBook() {
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> resultListOf1Book = generateListOfNBooks(1);
+        LibraryUser randomUser = new LibraryUser("Janek", "Kowalski", "123456789");
+
+        when(libraryDatabaseMock.listBooksInHandsOf(randomUser))
+                .thenReturn(resultListOf1Book);
+
+        // When
+        List<Book> theZeroBookUser = bookLibrary.listBooksInHandsOf(randomUser);
+
+
+        // Then
+        assertEquals(1, theZeroBookUser.size());
+    }
+
+
+    @Test
+    public void testListBooksInHandsOf_FiveBook() {
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> resultListOf5Books = generateListOfNBooks(5);
+        LibraryUser randomUser = new LibraryUser("Janek", "Kowalski", "123456789");
+
+        when(libraryDatabaseMock.listBooksInHandsOf(randomUser))
+                .thenReturn(resultListOf5Books);
+
+        // When
+        List<Book> theZeroBookUser = bookLibrary.listBooksInHandsOf(randomUser);
+
+
+        // Then
+        assertEquals(5, theZeroBookUser.size());
+    }
 }
