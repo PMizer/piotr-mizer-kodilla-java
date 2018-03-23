@@ -24,3 +24,6 @@ dist/
 nbdist/
 .nb-gradle/
 /kodilla-testing/out/
+/src/test/java/com/kodilla/KodillaCourseApplicationTests.java
+/out/
+/kodilla-stream/out/
