@@ -16,5 +16,10 @@ public final class Continent {
 
     public List<Country> getCountriesList(){
         return countriesList;
+           }
+
+    public String getName() {
+        return name;
     }
 }
+
