@@ -3,9 +3,12 @@ package com.kodilla.stream.portfolio;
 import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.stream.Collectors.toList;
+
 
 public class BoardTestSuite {
     public Board prepareTestData() {
@@ -133,5 +136,26 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(2, longTasks);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask(){
+        // Given
+        Board project = prepareTestData();
+
+        // When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        double averageInProgressCompletion = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(x -> x.getTasks().stream())
+                .mapToDouble(x1 -> ChronoUnit.DAYS.between(x1.getCreated(), LocalDate.now()))
+                .average().getAsDouble();
+
+
+
+
+        // Then
+        Assert.assertEquals(10.0, averageInProgressCompletion, 0);
     }
 }
