@@ -19,12 +19,23 @@ public class FlightFinder {
          String arrivalAirport = flight.getArrivalAirport();
          String departureAirport = flight.getDepartureAirport();
 
-         Boolean isAvaibleArrivalAirpot = avaibleAirport.get(arrivalAirport);
-         Boolean isAvaibleDepartureAirport = avaibleAirport.get(departureAirport);
+         Boolean isAvaibleArrivalAirpot = avaibleAirport.containsKey(arrivalAirport);
+         Boolean isAvaibleDepartureAirport = avaibleAirport.containsKey(departureAirport);
 
          if (isAvaibleArrivalAirpot && isAvaibleDepartureAirport){
-             System.out.println("Flight avaible");
-             return true;
+
+              if(avaibleAirport.get(arrivalAirport) && avaibleAirport.get(departureAirport)){
+                  System.out.println("Flight avaible ");
+                  return true;
+              }
+              else if(!avaibleAirport.get(arrivalAirport)){
+                  System.out.println("No avaible flight on arrival airport");
+                  return false;
+              }
+              else{
+                  System.out.println("No avaible flight on departure airport");
+                  return false;
+              }
          }
          else {
              String message;
@@ -46,9 +57,9 @@ public class FlightFinder {
 
     public static void main(String[] args) {
          Flight flight1 = new Flight("Warsaw", "Gdansk");
-         Flight flight2 = new Flight("Vienna", "Prague");
-         Flight flight3 = new Flight("Paris", "Gdansk");
-         Flight flight4 = new Flight("Hamburg", "Berlin");
+         Flight flight2 = new Flight("Kowno", "Arktyka");
+         Flight flight3 = new Flight("Paris", "Himalaje");
+         Flight flight4 = new Flight("Tokio", "Berlin");
 
          FlightFinder flightFinder = new FlightFinder();
 
