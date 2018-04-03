@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FlightFinder {
+    Map<String, Boolean> avaibleAirport;
+
+
+
+         FlightFinder(Map avaibleAirport){
+             this.avaibleAirport = avaibleAirport;
+         }
+
 
      public boolean findFlight(Flight flight) throws RouteNotFoundException{
-        Map<String, Boolean> avaibleAirport = new HashMap<>();
 
-         avaibleAirport.put("Warsaw", true);
-         avaibleAirport.put("Gdansk", true);
-         avaibleAirport.put("Vienna", true);
-         avaibleAirport.put("Prague", false);
-         avaibleAirport.put("Paris", false);
-         avaibleAirport.put("Berlin", false);
-         avaibleAirport.put("Hamburg", false);
 
          String arrivalAirport = flight.getArrivalAirport();
          String departureAirport = flight.getDepartureAirport();
@@ -40,15 +40,11 @@ public class FlightFinder {
          else {
              String message;
 
-             if(!isAvaibleArrivalAirpot && !isAvaibleDepartureAirport){
-                 message = "No airport in any of those cities";
+             if(isAvaibleArrivalAirpot){
+                 message = flight.departureAirport + " has no airport.";
              }
-             else if(!isAvaibleArrivalAirpot){
-                 message = "No airport in arrival location";
-
-             }
-             else{
-                 message = "No airport in departure location";
+            else{
+                 message = flight.arrivalAirport + " has no airport.";
              }
 
              throw new RouteNotFoundException(message);
@@ -56,12 +52,23 @@ public class FlightFinder {
     }
 
     public static void main(String[] args) {
+
+        Map<String, Boolean> avaibleAirport = new HashMap<>();
+
+        avaibleAirport.put("Warsaw", true);
+        avaibleAirport.put("Gdansk", true);
+        avaibleAirport.put("Vienna", true);
+        avaibleAirport.put("Prague", false);
+        avaibleAirport.put("Paris", false);
+        avaibleAirport.put("Berlin", false);
+        avaibleAirport.put("Hamburg", false);
+
          Flight flight1 = new Flight("Warsaw", "Gdansk");
          Flight flight2 = new Flight("Kowno", "Arktyka");
          Flight flight3 = new Flight("Paris", "Himalaje");
          Flight flight4 = new Flight("Tokio", "Berlin");
 
-         FlightFinder flightFinder = new FlightFinder();
+         FlightFinder flightFinder = new FlightFinder(avaibleAirport);
 
          try{
              System.out.println(flight1.getDepartureAirport()+" to "+flight1.getArrivalAirport());
