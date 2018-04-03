@@ -8,69 +8,52 @@ public class FlightFinder {
 
 
 
-         FlightFinder(Map avaibleAirport){
-             this.avaibleAirport = avaibleAirport;
+    FlightFinder(Map availableAirport){
+        this.avaibleAirport = availableAirport;
+    }
+
+
+     public void findFlight(Flight flight) throws RouteNotFoundException{
+
+
+         String arrival = flight.getArrivalAirport();
+         if (!avaibleAirport.containsKey(arrival)) {
+             throw new RouteNotFoundException("Arrival airport doesn't exist");
          }
 
-
-     public boolean findFlight(Flight flight) throws RouteNotFoundException{
-
-
-         String arrivalAirport = flight.getArrivalAirport();
-         String departureAirport = flight.getDepartureAirport();
-
-         Boolean isAvaibleArrivalAirpot = avaibleAirport.containsKey(arrivalAirport);
-         Boolean isAvaibleDepartureAirport = avaibleAirport.containsKey(departureAirport);
-
-         if (isAvaibleArrivalAirpot && isAvaibleDepartureAirport){
-
-              if(avaibleAirport.get(arrivalAirport) && avaibleAirport.get(departureAirport)){
-                  System.out.println("Flight avaible ");
-                  return true;
-              }
-              else if(!avaibleAirport.get(arrivalAirport)){
-                  System.out.println("No avaible flight on arrival airport");
-                  return false;
-              }
-              else{
-                  System.out.println("No avaible flight on departure airport");
-                  return false;
-              }
+         if(avaibleAirport.get(arrival)){
+             System.out.println("Flight possible");
          }
          else {
-             String message;
-
-             if(isAvaibleArrivalAirpot){
-                 message = flight.departureAirport + " has no airport.";
-             }
-            else{
-                 message = flight.arrivalAirport + " has no airport.";
-             }
-
-             throw new RouteNotFoundException(message);
+             System.out.println("Airport is closed");
          }
     }
 
     public static void main(String[] args) {
 
-        Map<String, Boolean> avaibleAirport = new HashMap<>();
+         Map<String, Boolean> availableAirport = new HashMap<>();
 
-        avaibleAirport.put("Warsaw", true);
-        avaibleAirport.put("Gdansk", true);
-        avaibleAirport.put("Vienna", true);
-        avaibleAirport.put("Prague", false);
-        avaibleAirport.put("Paris", false);
-        avaibleAirport.put("Berlin", false);
-        avaibleAirport.put("Hamburg", false);
+         availableAirport.put("Warsaw", true);
+         availableAirport.put("Gdansk", true);
+         availableAirport.put("Vienna", true);
+         availableAirport.put("Prague", false);
+         availableAirport.put("Paris", false);
+         availableAirport.put("Berlin", false);
+         availableAirport.put("Hamburg", false);
 
-         Flight flight1 = new Flight("Warsaw", "Gdansk");
-         Flight flight2 = new Flight("Kowno", "Arktyka");
-         Flight flight3 = new Flight("Paris", "Himalaje");
-         Flight flight4 = new Flight("Tokio", "Berlin");
+         String departureAirport = "Warsaw";
 
-         FlightFinder flightFinder = new FlightFinder(avaibleAirport);
+         Flight flight1 = new Flight(departureAirport, "Gdansk");
+         Flight flight2 = new Flight(departureAirport, "Arktyka");
+         Flight flight3 = new Flight(departureAirport, "Himalaje");
+         Flight flight4 = new Flight(departureAirport, "Prague");
+
+
+
+         FlightFinder flightFinder = new FlightFinder(availableAirport);
 
          try{
+
              System.out.println(flight1.getDepartureAirport()+" to "+flight1.getArrivalAirport());
              flightFinder.findFlight(flight1);
          }
@@ -102,6 +85,8 @@ public class FlightFinder {
         catch (RouteNotFoundException e){
             System.out.println(e.getMessage());
         }
+
+
 
 
     }
