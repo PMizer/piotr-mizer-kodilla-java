@@ -1,4 +1,7 @@
-package com.kodilla.good.patterns.challenges.OrderService;
+package com.kodilla.good.patterns.challenges.orderService.orders;
+
+import com.kodilla.good.patterns.challenges.orderService.data.Product;
+import com.kodilla.good.patterns.challenges.orderService.data.User;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,6 @@
-package com.kodilla.good.patterns.challenges.OrderService;
+package com.kodilla.good.patterns.challenges.orderService.services;
+
+import com.kodilla.good.patterns.challenges.orderService.data.User;
 
 public class EmailService implements InformationService {
     @Override
