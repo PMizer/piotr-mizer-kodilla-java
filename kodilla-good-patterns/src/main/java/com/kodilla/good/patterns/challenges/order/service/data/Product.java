@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.orderService.data;
+package com.kodilla.good.patterns.challenges.order.service.data;
 
 public final class Product {
     private final int id;

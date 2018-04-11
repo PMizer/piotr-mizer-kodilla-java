@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.orderService.orders;
+package com.kodilla.good.patterns.challenges.order.service.orders;
 
 public class OrderDto {
     public Order order;

@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.orderService.data;
+package com.kodilla.good.patterns.challenges.order.service.data;
 
 public class User {
     private int id;

@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challenges.orderService.services;
+package com.kodilla.good.patterns.challenges.order.service.services;
 
-import com.kodilla.good.patterns.challenges.orderService.orders.Order;
+import com.kodilla.good.patterns.challenges.order.service.orders.Order;
 
 import java.util.ArrayList;
 import java.util.List;
