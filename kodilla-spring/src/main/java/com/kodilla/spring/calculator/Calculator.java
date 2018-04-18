@@ -1,8 +1,17 @@
 package com.kodilla.spring.calculator;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public final class Calculator {
-    private Display display;
     double result;
+    private final Display display;
+
+    @Autowired
+    public Calculator(final Display display) {
+        this.display = display;
+    }
 
     public double add(double a, double b){
         result = a + b;
@@ -19,11 +28,9 @@ public final class Calculator {
         display.displayValue(result);
         return result;
     }
-
     public double div(double a, double b){
-        result = a/b;
+        result = a / b;
         display.displayValue(result);
         return result;
     }
-
 }
