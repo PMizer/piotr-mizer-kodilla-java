@@ -45,11 +45,5 @@ src/main/resources/static/
 src/main/resources/templates/
 src/test/
 /kodilla-spring-intro/src/test/resources/
-.gitignore
-build.gradle
-gradle/
-gradlew
-gradlew.bat
-settings.gradle
 src/main/java/com/kodilla/spring/SpringRunner.java
 src/main/resources/
