@@ -1,9 +1,9 @@
 package com.kodilla.spring.portfolio;
 
-public final class Board {
-    private final TaskList toDoList;
-    private final TaskList inProgressList;
-    private final TaskList doneList;
+public class Board {
+    private TaskList toDoList;
+    private TaskList inProgressList;
+    private TaskList doneList;
 
     public Board(final TaskList toDoList, final TaskList inProgressList, final TaskList doneList) {
         this.toDoList = toDoList;
@@ -11,42 +11,15 @@ public final class Board {
         this.doneList = doneList;
     }
 
-    public boolean addToDoTask(String task) {
-        return toDoList.addTask(task);
+    public TaskList getToDoList() {
+        return toDoList;
     }
 
-    public boolean addInProgressTask(String task) {
-        return inProgressList.addTask(task);
+    public TaskList getInProgressList() {
+        return inProgressList;
     }
 
-    public boolean addDoneTask(String task) {
-        return doneList.addTask(task);
-    }
-
-
-    public String getToDoTask(int index) {
-        return toDoList.getTask(index);
-    }
-
-
-    public String getInProgressTask(int index) {
-        return inProgressList.getTask(index);
-    }
-
-
-    public String getDoneTask(int index) {
-        return doneList.getTask(index);
-    }
-
-    public int toDoQuantity() {
-        return toDoList.size();
-    }
-
-    public int inProgressQuantity() {
-        return inProgressList.size();
-    }
-
-    public int doneQuantity() {
-        return doneList.size();
+    public TaskList getDoneList() {
+        return doneList;
     }
 }
