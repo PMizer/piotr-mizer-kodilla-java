@@ -18,7 +18,7 @@ public class LibraryTestSuite {
         Library clonedLibrary = null;
         try{
             clonedLibrary = library.shallowCopy();
-            clonedLibrary.setName("Aleksandria Copy");
+            clonedLibrary.setName("Aleksandria Shallow Copy");
         } catch (CloneNotSupportedException e){
             System.out.println(e);
         }
@@ -27,7 +27,7 @@ public class LibraryTestSuite {
 
         try{
             deepClonedLibrary = library.deepCopy();
-            deepClonedLibrary.setName("Aleksandria Copy");
+            deepClonedLibrary.setName("Aleksandria Deep Copy");
         } catch (CloneNotSupportedException e){
             System.out.println(e);
         }
