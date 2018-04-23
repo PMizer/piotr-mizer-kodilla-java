@@ -2,7 +2,6 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
-
 ### STS ###
 .apt_generated
 .classpath
@@ -24,6 +23,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
 out/
 
 
