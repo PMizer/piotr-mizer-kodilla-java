@@ -52,7 +52,7 @@ public class Item {
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PRODUCT_ID",nullable = false)
+    @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
     }
@@ -73,12 +73,16 @@ public class Item {
         this.value = value;
     }
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "INVOICE_ID",nullable = false)
+    @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
         return invoice;
     }
 
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -31,6 +31,7 @@ public class Invoice {
         this.id = id;
     }
 
+
     @NotNull
     @Column(name = "NUMBER",unique = true)
     public String getNumber() {
@@ -55,6 +56,8 @@ public class Invoice {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+
 }
 
 

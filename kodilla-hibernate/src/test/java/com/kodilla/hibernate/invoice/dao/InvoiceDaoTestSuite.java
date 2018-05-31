@@ -22,7 +22,9 @@ import java.util.*;
 public class InvoiceDaoTestSuite {
     @Autowired
     InvoiceDao invoiceDao;
+    @Autowired
     ProductDao productDao;
+    @Autowired
     ItemDao itemDao;
 
     @Test
@@ -37,18 +39,20 @@ public class InvoiceDaoTestSuite {
         items.add(item1);
         items.add(item2);
 
-        Invoice invoice = new Invoice("123");
-        invoice.setItems(items);
+        Invoice invoice1 = new Invoice("123");
+        invoice1.setItems(Arrays.asList(item1,item2));
 
         //Then
-        invoiceDao.save(invoice);
-        int invoice1Id = invoice.getId();
+
+        invoiceDao.save(invoice1);
+        int invoiceId = invoice1.getId();
+
 
         //When
         Assert.assertEquals(2, productDao.count());
         Assert.assertEquals(2, itemDao.count());
         Assert.assertEquals(1, invoiceDao.count());
-        Assert.assertNotEquals(0, invoice1Id);
+        Assert.assertNotEquals(0, invoiceId);
 
         //CleanUp
 
