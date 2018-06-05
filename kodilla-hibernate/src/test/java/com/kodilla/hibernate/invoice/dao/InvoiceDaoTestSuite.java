@@ -44,7 +44,8 @@ public class InvoiceDaoTestSuite {
 
         Invoice invoice1 = new Invoice("123");
         invoice1.setItems(Arrays.asList(item1,item2));
-
+        item1.setInvoice(invoice1);
+        item2.setInvoice(invoice1);
         //Then
 
         invoiceDao.save(invoice1);
