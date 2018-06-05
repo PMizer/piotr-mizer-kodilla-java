@@ -33,6 +33,9 @@ public class InvoiceDaoTestSuite {
         Product product1 = new Product("maslo");
         Product product2 = new Product("mieso");
 
+        productDao.save(product1);
+        productDao.save(product2);
+
         List<Item> items = new ArrayList<>();
         Item item1 = new Item(product1, new BigDecimal(30),2);
         Item item2 = new Item(product2, new BigDecimal(50),5);
